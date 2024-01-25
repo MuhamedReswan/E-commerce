@@ -1,0 +1,77 @@
+<%- include('../layout/header.ejs') -%>
+
+<div class="wrapper">
+   
+    <!-- <div class="" style="margin-left: 4rem; margin-bottom: 2rem;">                         
+        <img src="img/logo.png" alt="">
+    </div> -->
+    <div></div>
+    <div class="d-flex justify-content-center" >                    
+      <h3 class="new-text">orgofoods</h3>
+    </div>
+
+    <% if (messages.notVerified) { %>
+      <div class="alert alert-danger d-flex align-items-center" role="alert" id="existAlert">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2 " viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+          <div >
+              <strong>Hey !</strong>
+            <%= messages.notVerified %>          
+          </div>
+        </div>             
+  <% } %>
+
+    
+    <form action="/signup" method="post" onsubmit="return validate()">
+
+        <div class="input-box">
+            <%if(messages.nameExist) {%> 
+              <div class="text-danger serverError" style="position: absolute; top: -22px; left: 6px;"><%= messages.nameExist %></div> 
+            <%}%>
+            <div class="text-danger " id="userError" style="position: absolute; top: -22px; left: 6px;"></div>
+            <input type="text" name="Name" id="uname" placeholder="Enter your name"  style="padding: 10px; margin: 1rem, 0; ">
+        </div>
+
+        <div class="input-box">
+          <%if(messages.emailExist) {%>
+             <div class="text-danger serverError"  style="position: absolute; top: -22px; left: 6px;"><%= messages.emailExist %></div> 
+            <%}%>
+          <div class="text-danger" id="emailError" style="position: absolute; top: -22px; left: 6px;"></div>
+            <input type="text" name="Email" id="email" placeholder="Enter your email"  style="padding: 10px; margin: 1rem, 0; ">
+          </div>
+
+        <div class="input-box">
+          <div class="text-danger" id="phoneErr" style="position: absolute; top: -22px; left: 6px;"></div>
+            <input type="tel" name="Mobile" id="phone" placeholder="Enter your phone"  style="padding: 10px; margin: 1rem, 0; ">
+          </div>
+     
+      <div class="input-box">
+        <div class="text-danger" id="passwordError" style="position: absolute; top: -22px; left: 6px;"></div>
+        <input type="password" name="Password" id="password" placeholder="Create password"  style="padding: 10px; margin: 1rem, 0; ">
+      </div>
+      <div class="input-box">
+        <div class="text-danger" id="passwordError2" style="position: absolute; top: -22px; left: 6px;"></div>
+        <input type="password"  name="conform" id="conform" placeholder="Comform password" style="padding: 10px; margin: 1rem, 0; ">
+      </div>
+     
+      
+
+      <div class="input-box button">
+        <input type="Submit" value="Sign up" style=":hover{background-color: #ffff;}; margin-top: 1.3rem; ">
+      </div>
+
+      <div class="input-box" style="position: relative; ">
+        <img src="/img/google.png" alt="google logo"  style=" position:absolute; width: 30px; height:30px; top: 1.9rem; left: 9px;">
+        <a href="" class="btn btn-outline-dark" style="padding-top: .7rem;  padding-bottom: .7rem;  width: 22.5rem; margin-top: 1.3rem;">Log in with google</a>
+      </div>
+
+      <div class="text pt-2" >
+        <h3>have an account? <a href="/login" style="color: rgb(48, 94, 150); ">Log in</a></h3>
+      </div>
+    </form>
+  </div>
+
+  <!-- <script src="js/user/form-validation.js"></script> -->
+
+<%- include('../layout/footer.ejs') -%>
